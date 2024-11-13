@@ -1,0 +1,146 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.card, .cta-button, .cta-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover, .cta-button:hover, .cta-btn:hover {
+    transform: translateY(-10px);
+}
+
+
+.hero-image {
+    background: url('jimstech-use.webp') no-repeat center;
+    background-size: cover;
+    animation: move 20s infinite alternate ease-in-out;
+}
+
+@keyframes move {
+    0% { background-position: center top; }
+    100% { background-position: center bottom; }
+}
+
+
+.cta-button, .cta-btn {
+    position: relative;
+    overflow: hidden;
+}
+.cta-button::after, .cta-btn::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 200%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+.cta-button:active::after, .cta-btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+
+.information, .quote-section, .cta{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.information.show, .quote-section.show, .cta.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .hero, .cta {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text, .hero-image, .left-cta, .right-cta {
+        max-width: 100%;
+    }
+}
+
+
+.hero-text h1, .hero-text p {
+    overflow: hidden;
+}
+.hero-text h1 span, .hero-text p span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Active class for when elements are in view */
+.hero-text h1 span.show, .hero-text p span.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.typewriter {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #c10ba2;
+    animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+/* Control the width of the typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 32ch; } /* Adjust '20ch' to match the character count of your text */
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    20% { border-color: #c10ba2; }
+}
+
+
+
+.hero-text h1 {
+    background: linear-gradient(90deg, #3882F6, #c10ba2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: background-position 0.5s ease;
+    background-size: 200%;
+}
+
+.hero-text h1:hover {
+    background-position: 100%;
+}
+
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-text h1 {
+    display: inline-block;
+    animation: wave 2s infinite ease-in-out;
+}
+
+
+
+.scroll-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
